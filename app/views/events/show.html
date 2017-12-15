@@ -1,0 +1,29 @@
+<body>
+    <a href='/events'>Events Dashboard</a>
+    <% @event.each do |i| %>
+        <h1><%= i.name %></h1>
+        <p>Host: <%= i.user.first_name %></p>
+        <p>Date: <%= i.date %></p>
+        <p>Location: <%= i.location %></p>
+        <p>People who are going to the event: <%= i.goings.count %></p>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>State</th>
+            </tr>
+            <% i.users.each do |j| %>
+            <tr>
+                <td><%= j.first_name %></td>
+                <td><%= j.location %></td>
+                <td><%= j.state %></td>
+            </tr>
+            <% end %>
+        </table>
+    <% end %>
+    <h3>Discussion about this event</h3>
+    <h3>Add Comment</h3>
+    <form action='/discussion' method='post'>
+        
+    </form>
+</body>

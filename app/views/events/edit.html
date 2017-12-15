@@ -1,0 +1,19 @@
+<body>
+    <a href='/events'>Events Dashboard</a>
+    <% @event.each do |i| %>
+    <h1>Edit page</h1>
+    <form action='/events/<%= i.id %>/edit' method='post'>
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <h3>Event name: <%= i.name %></h3>
+        <p>Host: <%= i.user.first_name %></p>
+        <br>
+        <label>Date:</label>
+        <input type="date" name="event[date]" value='<%= i.date %>'>
+        <br><br>
+        <label>Location:</label>
+        <input type="text" name="event[location]" value="<%= i.location %>">
+        <br><br>
+        <input type="submit" value="Update">
+    </form>
+    <% end %>
+</body>
